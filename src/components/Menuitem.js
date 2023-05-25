@@ -1,20 +1,24 @@
 import { Img_Url } from "../../config"
-import { additem } from "../utils/store/cartSlice";
+import { additem, removeitem } from "../utils/store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react"
 import ItemQuantity from "./ItemQuantity";
+import ViewCart from "./ViewCart";
 
 const Menuitem = (props) => {
     const [count, setcount] = useState(0)
     const dispatch = useDispatch()
-    console.log("gdgdg"+props.item?.card?.quantity)
+    console.log("gdgdg" + props.item?.card?.quantity)
 
     const cartitem = useSelector(store => store.cart.items)
-
 
     const handleadditem = (item) => {
         dispatch(additem(item))
         setcount(count + 1)
+    }
+    const handleremoveitem = (item) => {
+        dispatch(removeitem(item))
+        setcount(count - 1)
     }
     return (
         <>
@@ -26,12 +30,17 @@ const Menuitem = (props) => {
                     </div>
                     <div>
                         <img className="restaurant-menu-img" src={Img_Url + props.item?.card?.info?.imageId} />
-                        <ItemQuantity item = {props.item?.card?.info}/>
-
+                        {/* <ItemQuantity item={props.item?.card?.info} /> */}
+                        <div className="quantity-container">
+                            <div className="quantity-btn" onClick={() => handleremoveitem(props.item?.card?.info.id)}>-</div>
+                            <div className="show-quantity">{count}</div>
+                            <div className="quantity-btn" onClick={() => handleadditem(props.item?.card?.info)}>+</div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="divider"></div>
+                  
         </>
     )
 }

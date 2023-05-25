@@ -35,7 +35,7 @@ const Headercomponenet = () => {
                 <div> <ul className="nav-item">
                     <Link to={"/"}><li>Home</li></Link>
                     <Link to={"/about"}><li>About</li></Link>
-                    <Link to={"/contact"}><li>Contact</li></Link>
+                    {/* <Link to={"/contact"}><li>Contact</li></Link> */}
                     <Link to={"/help"}><li>Help</li></Link>
                     <Link to={"/cart"}><li>Cart {Object.values(cartitem).length}</li></Link>
                 </ul>

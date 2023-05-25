@@ -12,5 +12,12 @@ export const help_Question = ["Can I edit my order?",
     "Is there a minimum order value?",
     "Do you charge for delivery?",
     "How long do you take to deliver?",
-    "  What are your delivery hours?"
+]
+export const help_Answer = [
+    "Yes!!",
+    "Yes you can do",
+    "No",
+    "Yes",
+    "yes if is there for second and third time",
+    "25 min",
 ]

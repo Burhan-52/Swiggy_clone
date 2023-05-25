@@ -8,14 +8,16 @@ import { additem } from "../utils/store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react"
 import Menuitem from "./Menuitem"
+import ViewCart from "./ViewCart"
 
 const Restaurantmenu = () => {
-const [count, setcount] = useState(0)
+    const [count, setcount] = useState(0)
     const { id } = useParams()
     const [restaurant, resimg] = useRestaurant(id)
     const dispatch = useDispatch()
-    
+
     const cartitem = useSelector(store => store.cart.items)
+    
 
     return (
         <>
@@ -46,8 +48,9 @@ const [count, setcount] = useState(0)
             {!restaurant ? <MenuShimmer /> :
                 <div>
                     <div className="recommended">Recommended ({restaurant.length})</div>
+                    {Object.keys(cartitem).length?<ViewCart/>:""}
                     {restaurant.map((item) => {
-                        return <Menuitem key={item.card?.info?.id} item = {item} />
+                        return <Menuitem key={item.card?.info?.id}  item={item} />
                     })}
                 </div>
             }
